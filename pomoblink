@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# By default use 25-minute pomodoros
+if [ "$#" -gt 0 ]; then
+  TIME=$(($1 * 60))
+  else
+  TIME=1500
+fi
+
+echo "Pomodoro for $(($TIME / 60)) minute(s)"
+blink1-tool --green
+sleep $TIME
+echo "Pomodoro is over"
+blink1-tool --rgb 0xff,0,00 --blink 10
