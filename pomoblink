@@ -7,6 +7,7 @@ if [ "$#" -gt 0 ]; then
   TIME=1500
 fi
 
+date
 echo "Pomodoro for $(($TIME / 60)) minute(s)"
 blink1-tool --green
 sleep $TIME
