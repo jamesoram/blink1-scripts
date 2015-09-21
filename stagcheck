@@ -4,8 +4,8 @@ check_staging()
 {
  
   # if all is fine "versions" should return 12 lines"
-  EXPECTED=12
-  FOUND=`versions | wc -l`
+  EXPECTED=18
+  FOUND=`{ presapps ; versions ; } | wc -l`
   
   echo "Checked staging, found $FOUND and was expecting $EXPECTED"
   
