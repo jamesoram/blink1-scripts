@@ -11,7 +11,7 @@ check_staging()
   
   if [ $FOUND -ne $EXPECTED ]
     then
-      blink1-tool --rgb 0xff,0,00 --blink 40
+      blink1-tool --rgb 0xff,0,00 --blink 40 &
   fi  
 }
 
