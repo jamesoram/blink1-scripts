@@ -18,5 +18,5 @@ check_staging()
 while :
 do
   check_staging
-  sleep 60
+  sleep 90
 done  
