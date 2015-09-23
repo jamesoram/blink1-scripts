@@ -6,6 +6,7 @@ check_staging()
   EXPECTED=18
   FOUND=`{ presapps ; versions ; } | wc -l`
   
+  date
   echo "Checked staging, found $FOUND and was expecting $EXPECTED"
   
   if [ $FOUND -ne $EXPECTED ]
