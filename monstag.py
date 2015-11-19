@@ -39,5 +39,5 @@ class Poller(object):
                 self.blinker.add(monitor)
         time.sleep(self.poll_time)
 
-poller = Poller()
-poller.poll()
+POLLER = Poller()
+POLLER.poll()
