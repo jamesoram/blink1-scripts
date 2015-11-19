@@ -6,6 +6,7 @@ import os
 class Monitor(object):
 
     def __init__(self):
+        self.name = "hs"
         self.url = "http://chhlapphot006.karmalab.net:7405/header_svc/version.txt"
         self.expected = "release.tag"
         self.colour = "12AA3F"
@@ -26,6 +27,7 @@ class Blinker(object):
 
     def add(self, monitor):
         self.queue.put(monitor)
+        print "Error in: " + monitor.name
         os.system(self.command + self.queue.get().colour + " -t " + self.queue.get().blink_time)
 
 class Poller(object):
