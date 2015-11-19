@@ -1,6 +1,7 @@
 import urllib2
 import time
 import Queue
+import os
 
 class Monitor(object):
 
@@ -22,7 +23,7 @@ class Blinker(object):
 
     def add(self, monitor):
         self.queue.put(monitor)
-        self.command.run(self.queue.get().colour + " -t " + self.queue.get().blink_time)
+        os.system(self.command + self.queue.get().colour + " -t " + self.queue.get().blink_time)
 
 class Poller(object):
 
