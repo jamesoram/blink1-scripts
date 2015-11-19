@@ -12,7 +12,10 @@ class Monitor(object):
         self.blink_time = "700"
 
     def check(self):
-        response = urllib2.urlopen(self.url).read()
+        try:
+            response = urllib2.urlopen(self.url).read()
+        except urllib2.URLError:
+            return False
         return self.expected in response
 
 class Blinker(object):
