@@ -3,7 +3,7 @@ import time
 import Queue
 import os
 
-class Monitor(object):
+class HttpMonitor(object):
 
     def __init__(self):
         self.name = "hs"
@@ -46,6 +46,6 @@ class Poller(object):
             time.sleep(self.poll_time)
 
 MON = []
-MON.append(Monitor())
+MON.append(HttpMonitor())
 POLLER = Poller(MON)
 POLLER.poll()
