@@ -32,10 +32,9 @@ class Blinker(object):
 
 class Poller(object):
 
-    def __init__(self):
+    def __init__(self, monitors):
         self.poll_time = 90
-        self.monitors = []
-        self.monitors.append(Monitor())
+        self.monitors = monitors
         self.blinker = Blinker()
 
     def poll(self):
@@ -44,5 +43,7 @@ class Poller(object):
                 self.blinker.add(monitor)
         time.sleep(self.poll_time)
 
-POLLER = Poller()
+MON = []
+MON.append(Monitor())
+POLLER = Poller(MON)
 POLLER.poll()
