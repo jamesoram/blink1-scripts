@@ -28,7 +28,8 @@ class Blinker(object):
     def add(self, monitor):
         self.queue.put(monitor)
         print "Error in: " + monitor.name
-        os.system(self.command + self.queue.get().colour + " -t " + self.queue.get().blink_time)
+        cmd = self.command + self.queue.get().colour + " -t " + self.queue.get().blink_time
+        os.system(cmd)
 
 class Poller(object):
 
@@ -38,10 +39,11 @@ class Poller(object):
         self.blinker = Blinker()
 
     def poll(self):
-        for monitor in self.monitors:
-            if not monitor.check():
-                self.blinker.add(monitor)
-        time.sleep(self.poll_time)
+        while True:
+            for monitor in self.monitors:
+                if not monitor.check():
+                    self.blinker.add(monitor)
+            time.sleep(self.poll_time)
 
 MON = []
 MON.append(Monitor())
