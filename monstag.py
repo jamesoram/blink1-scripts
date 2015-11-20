@@ -19,7 +19,7 @@ class Monitor(object):
             return False
         return self.expected in response
 
-class Blinker(object):
+class BlinkAlerter(object):
 
     def __init__(self):
         self.queue = Queue.LifoQueue()
@@ -36,13 +36,13 @@ class Poller(object):
     def __init__(self, monitors):
         self.poll_time = 90
         self.monitors = monitors
-        self.blinker = Blinker()
+        self.alerter = BlinkAlerter()
 
     def poll(self):
         while True:
             for monitor in self.monitors:
                 if not monitor.check():
-                    self.blinker.add(monitor)
+                    self.alerter.add(monitor)
             time.sleep(self.poll_time)
 
 MON = []
